@@ -99,8 +99,9 @@ const setTextFilter = (text ='') =>{
     };
 };
 
-// set sortBy filter
-const setSortBy = () =>({  type: 'SET_SORT_BY_FILTER' });
+// set sortBy date/Amount filter
+const setSortByDate = () =>({  type: 'SET_SORT_BY_DATE' });
+const setSortByAmount = () =>({  type: 'SET_SORT_BY_AMOUNT' });
 
 // set start date
 const setStartDate = (startDate) =>{
@@ -124,19 +125,16 @@ const filtersReducer = (state = defaultFilterObj, action)=>{
                     ...state,
                     text: action.text,
                 };
-        case 'SET_SORT_BY_FILTER':
-               if(state.sortBy === 'date'){
-                   return{
-                       ...state,
-                       sortBy: 'amount'
-                   }
-               } else {
+        case 'SET_SORT_BY_DATE':
                    return{
                        ...state,
                        sortBy: 'date',
-                   }
-               };
-
+                   }; 
+        case 'SET_SORT_BY_AMOUNT':
+                   return{
+                        ...state,
+                        sortBy: 'amount',
+                    };
         case 'SET_START_DATE':
                 return {
                     ...state,
@@ -153,8 +151,24 @@ const filtersReducer = (state = defaultFilterObj, action)=>{
     }
 };
 
-const getVisibleExpenses = (expenses, filters)=>{
- console.log(expenses, filters);
+const getVisibleExpenses = (expenses, { text, sortBy, startDate, endDate })=>{
+ return expenses.filter((expense)=>{
+    const startDateMatch = typeof(startDate) !== 'number' || startDate <= expense.createdAt;
+
+    const endDateMatch = typeof(endDate) !== 'number' || endDate >= expense.createdAt;
+
+    const textMatch = expense.description.toLowerCase().includes(text.toLowerCase());
+
+    return startDateMatch && endDateMatch && textMatch;
+ }).sort((a,b) => {
+    
+     if( sortBy === 'date' ){
+         return a.createdAt < b.createdAt ? 1 : -1; // if true(1): descending , if false(-1): ascending order is being used
+     }
+      else if( sortBy === 'amount' ){
+         return a.amount > b.amount ? 1: -1; // if true(1): descending , if false(-1): ascending order is being used
+     }
+ })
  
 };
 
@@ -169,8 +183,8 @@ store.subscribe(()=>{
     console.log(visibleExpenses);
 });
 
-const expense1 = store.dispatch(addExpense({ description: 'Going out', note: 'we ate steak'  }));
-const expense2= store.dispatch(addExpense({ description: 'Going out after lock down', note: 'we ate chicken leg'  }));
+const expense1 = store.dispatch(addExpense({ description: 'rent', note: 'I had to pay my rent', amount: 1000, createdAt: -21000  }));
+const expense2= store.dispatch(addExpense({ description: 'Going out', note: 'we ate chicken leg', amount:3500, createdAt: -1000  }));
 // store.dispatch(removeExpense( expense1.expense));
 // store.dispatch(editExpense(expense2.expense.id, {
 //     description: 'We had a good time',
@@ -178,11 +192,11 @@ const expense2= store.dispatch(addExpense({ description: 'Going out after lock d
 // }));
 
 
-// store.dispatch(setTextFilter( 'rent'));
+// store.dispatch(setTextFilter('reNt'));
 // store.dispatch(setTextFilter());
-// store.dispatch(setSortBy());
-// store.dispatch(setSortBy());
-// store.dispatch(setStartDate( 1012 ));
+// store.dispatch(setSortByDate());
+// store.dispatch(setSortByAmount());
+// store.dispatch(setStartDate( 0 ));
 // store.dispatch(setStartDate());
-// store.dispatch(setEndDate( 1200 ));
+// store.dispatch(setEndDate( 1250 ));
 // store.dispatch(setEndDate());
