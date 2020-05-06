@@ -1,11 +1,21 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import ExpenseForm from './expenseForm';
+import { addExpense } from '../actions/expenses';
 
-const createExpense = ()=>(
-    
+const createExpense = (props)=>(
     <div>
-    This is the createExpense;
+        <h1> Add Expense </h1>
+        <ExpenseForm 
+        onSubmit = { (expense)=>{ 
+            props.dispatch(addExpense(expense));
+            props.history.push('/');
+        } }
+        />
     </div>
 
 ); 
 
-export default createExpense;    
+const mapStateToProps = (state)=> ({ expenses: state.expenses });
+
+export default connect(mapStateToProps)(createExpense);   

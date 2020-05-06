@@ -1,5 +1,4 @@
 // Filter reducer:
-
 const defaultFilterObj = {
     text: '',
     sortBy: 'date',
