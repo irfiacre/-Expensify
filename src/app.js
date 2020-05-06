@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 import 'normalize.css/normalize.css';
 import './styles/style.scss';
 import configureStore from './store/configureStore';
@@ -25,5 +26,10 @@ store.dispatch( setTextFilter('Gas') );
 
 
 const appDiv = document.getElementById('app');
+const jsx =(
+    <Provider store= { store } >
+        <AppRouter />
+    </Provider>
+);
 
-ReactDOM.render(<AppRouter />, appDiv);
+ReactDOM.render(jsx, appDiv);
