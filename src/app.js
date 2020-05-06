@@ -11,18 +11,15 @@ import AppRouter from './router/appRouter';
 
 const store = configureStore();
 
-// console.log(store.getState());
-
 store.subscribe(()=>{
     const state = store.getState();
     const visibleExpenses = getVisibleExpenses( state.expenses, state.filters ) 
-    console.log(visibleExpenses);
+    // console.log(visibleExpenses);
 });
 
-store.dispatch( addExpense({ description: 'Gas Bill', note: 'I had to pay my gas bill for cooking', amount: 3000, createdAt: 1000  }) );
-store.dispatch( addExpense({ description: 'Water Bill', note: 'This is related to house hold bills', amount: 500, createdAt: -21000  }) );
-
-store.dispatch( setTextFilter('Gas') );
+store.dispatch( addExpense({ description: 'Gas Bill', note: 'I had to pay my gas bill for cooking', amount: 3000  }) );
+store.dispatch( addExpense({ description: 'Water Bill', note: 'This is related to house hold bills',createdAt: 1000 }) );
+store.dispatch( addExpense({ description: 'Rent', note: 'This is related to house hold bills', amount: 15000  }) );
 
 
 const appDiv = document.getElementById('app');
