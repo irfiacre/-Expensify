@@ -4,8 +4,6 @@ import ExpenseListItem from './expenseListItem';
 import filteredSortedExpenses from '../selectors/expenses';
 
 const expensesList =(props)=>{
-    // console.log(props.expenses);
-    
     return (
         <div>
             <h1> Expenses List: </h1>

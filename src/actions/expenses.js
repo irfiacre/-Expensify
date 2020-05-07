@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 export const addExpense = ({ 
     description='', 
     note='', 
-    amount= 0.01, 
+    amount= 0,
     createdAt= 0,
     
     } = {} )=>{
