@@ -7,7 +7,7 @@
     "live": "live-server public/",
     "build": "webpack",
     "dev-server": "webpack-dev-server",
-    "test": "jest --coverage -u",
+    "test": "jest",
     "test:watch": "jest --watch"
   },
   "dependencies": {
