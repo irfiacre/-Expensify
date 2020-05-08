@@ -5,7 +5,6 @@ const Header =()=>(
         <h1>Expensify</h1>
         <NavLink to="/" exact activeClassName="isActive">Home</NavLink>
         <NavLink to="/create" activeClassName="isActive">Create Expense</NavLink>
-        <NavLink to="/edit" activeClassName="isActive">Edit Expense</NavLink>
         <NavLink to="/help" activeClassName="isActive">Help</NavLink>
     </header>
 ); 

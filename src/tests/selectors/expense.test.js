@@ -1,30 +1,8 @@
+import moment from 'moment';
 import expenseSelector from '../../selectors/expenses';
+import expenses from '../fixtures/expensesData';
 
 describe('-------] Testing For The Expenses Selector [-------', ()=>{
-
-    const expenses = [
-        {
-            id: '1',
-            description: 'Gum Expense',
-            note :'Testing Expense 1',
-            amount: 195,
-            createdAt: 0,
-        },
-        {
-            id: '2',
-            description: 'Rent Expense',
-            note :'Testing Expense 2',
-            amount: 109500,
-            createdAt: -1000,
-        },
-        {
-            id: '3',
-            description: 'Credit Card Expense',
-            note :'Testing Expense 3',
-            amount: 4500,
-            createdAt: 1000,
-        },
-    ];
 
     const defaultFilters = {
         text: '',
@@ -33,14 +11,49 @@ describe('-------] Testing For The Expenses Selector [-------', ()=>{
         endDate: undefined,
     }
 
-    test('Should return an object that is filtered and sorted by text value',()=>{
+    test('Should return an array that is filtered by TEXT value',()=>{
         const filters = { 
             ...defaultFilters,
             text : 't',
          } 
-       
         const selectorTest = expenseSelector( expenses, filters );
         expect(selectorTest).toEqual([ expenses[2], expenses[1] ]) 
-
     });
+
+    test('Should return an array that is filtered by START_DATE',()=>{
+        const filters = { 
+            ...defaultFilters,
+            startDate: moment(0),
+         } 
+        const selectorTest = expenseSelector( expenses, filters );
+        expect(selectorTest).toEqual([ expenses[2], expenses[0] ]) 
+    });
+
+    test('Should return an array that is filtered by END_DATE date',()=>{
+        const filters = { 
+            ...defaultFilters,
+            endDate: moment(0),
+         } 
+        const selectorTest = expenseSelector( expenses, filters );
+        expect(selectorTest).toEqual([ expenses[0], expenses[1] ]) 
+    });
+
+    test('Should return an array that is sorted by DATE',()=>{
+        const filters = { 
+            ...defaultFilters,
+            sortBy: 'date',
+         } 
+        const selectorTest = expenseSelector( expenses, filters );
+        expect(selectorTest).toEqual([ expenses[2], expenses[0], expenses[1] ]) 
+    });
+
+    test('Should return an array that is sorted by AMOUNT',()=>{
+        const filters = { 
+            ...defaultFilters,
+            sortBy: 'amount',
+         } 
+        const selectorTest = expenseSelector( expenses, filters );
+        expect(selectorTest).toEqual([ expenses[1], expenses[2], expenses[0] ]) 
+    });
+
 });
