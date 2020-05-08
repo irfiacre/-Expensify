@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`*************** Testing the NotFound component *************** Should render the NotFound page correctly 1`] = `
+<div>
+  <p>
+    404!
+  </p>
+  <p>
+    <b>
+      <i>
+        PAGE NOT FOUND
+      </i>
+    </b>
+  </p>
+  <Link
+    to="/"
+  >
+    Go Home
+  </Link>
+</div>
+`;

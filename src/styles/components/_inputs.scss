@@ -1,0 +1,38 @@
+.textInput {
+    border: 1px solid #cacccd;
+    height: 50px;
+    font-size: $font-size-large;
+    font-weight: 300;
+    padding: $smallSize;
+  }
+  
+  .select {
+    @extend .textInput;
+  }
+  .datePicker{
+    @extend .textInput;
+  }
+  
+  .textarea {
+    @extend .textInput;
+    height: 10rem;
+  }
+  
+  // Grouped inputs
+  
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: $twoNormalSize;
+    @media (min-width: $desktop-breakpoint) {
+      flex-direction: row;
+      margin-bottom: $threeNormalSize;
+    }
+  }
+  
+.inputGroupItem {
+    margin-bottom: $smallSize;
+    @media (min-width: $desktop-breakpoint) {
+      margin: 0 $threeNormalSize 0 0;
+    }
+  }

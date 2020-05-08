@@ -1,0 +1,56 @@
+
+.listBody {
+    margin-bottom: $normalSize;
+    padding: $normalSize;
+  }
+
+.noListMessage {
+    align-items: center;
+    color: $grey;
+    justify-content: center;
+    &:hover {
+      background: none;
+    }
+  }
+
+.listHeader {
+    background: $off-white;
+    border: 1px solid darken($off-white, 7%);
+    color: $grey;
+    display: flex;
+    justify-content: space-between;
+    padding: $smallSize $normalSize;
+  }
+
+.listItem{
+    border: 1px solid darken($off-white, 7%);
+    border-top: none;
+    color: $dark-grey;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: $smallSize;
+    text-decoration: none;
+    transition: background .3s ease;
+    &:hover {
+      background: $off-white;
+    }
+  }
+
+.listItemTitle {
+    margin: 0;
+    word-break: break-all;
+  }
+  
+.listItemSubtitle {
+    color: $grey;
+    font-size: $font-size-small;
+}
+  
+.listItemData {
+    margin: $smallSize 0 0 0;
+    @media (min-width: $desktop-breakpoint) {
+      margin: 0;
+      padding-left: $smallSize;
+    }
+  }

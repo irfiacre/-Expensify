@@ -1,6 +1,6 @@
 import React from 'react';
 import moment from 'moment';
-import 'react-dates/initialize';
+// import 'react-dates/initialize';
 import { SingleDatePicker } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
 
@@ -62,23 +62,27 @@ export default class ExpenseForm extends React.Component{
 
     render(){
         return(
-            <div>
-                { this.state.error && <p>{ this.state.error }</p>  }
+            <div className='contentContainer'>
+                <form className="form"  onSubmit = { this.onFormSubmit }>
 
-                <form onSubmit = { this.onFormSubmit }>
+                { this.state.error && <p className="form__error">{ this.state.error }</p>  }
+
                 <input type='text' 
+                    className="textInput"
                     placeholder='Description'
                     value = { this.state.description }
                     onChange= { this.onDescriptionChange }
                     autoFocus
                 />
                 <input type='text' 
+                    className="textInput"
                     value= { this.state.amount }
                     placeholder='Amount'
                     onChange = { this.onAmountChange }
                 />
 
                 <SingleDatePicker
+                    className='datePicker'
                     date={ this.state.createdAt }
                     onDateChange = { this.onDateChange }
                     focused = { this.state.calendarFocused }
@@ -87,11 +91,12 @@ export default class ExpenseForm extends React.Component{
                     isOutsideRange = { ()=> false }
                 />
                 
-                <textarea 
+                <textarea
+                    className="textarea" 
                     placeholder='Add a note for your expense(optional)'
                     onChange={ this.onAddNoteChange }
                 ></textarea>
-                    <button> Add Expense </button>
+                    <button className="button"> Add Expense </button>
                 </form>
             </div>
         )
