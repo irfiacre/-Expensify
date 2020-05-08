@@ -7,6 +7,12 @@ import { editExpense, removeExpense } from '../actions/expenses';
 const updateExpense = (props)=>{
     return(
     <div>
+        <div className="pageHeader">
+          <div className="contentContainer">
+            <h1 className="pageHeaderTitle">Edit Expense</h1>
+          </div>
+        </div>
+        <div className="contentContainer">
         <ExpenseForm 
             expense = { props.expense }
             onSubmit={ (expense)=>{
@@ -15,12 +21,15 @@ const updateExpense = (props)=>{
             } }
         />
 
-        <button onClick={()=>{ 
+        <button 
+        className="button remove"
+        onClick={()=>{ 
             props.dispatch(removeExpense( { id: props.match.params.id } )); 
             props.history.push('/');
            }}> 
             Remove 
         </button>
+    </div>
     </div>
 );
 };

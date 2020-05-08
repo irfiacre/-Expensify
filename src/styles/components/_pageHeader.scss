@@ -1,0 +1,19 @@
+.pageHeader {
+    background: $off-white;
+    margin-bottom: $threeNormalSize;
+    padding: $threeNormalSize 0;
+  }
+  
+  .pageHeaderTitle {
+    font-weight: 300;
+    margin: 0;
+    span {
+      font-weight: 700;
+    }
+  }
+
+.dashboardTitle{
+    margin-top: 80px;
+    color: $grey;
+}  
+  

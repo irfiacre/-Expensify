@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`*************** Testing the DashBoard  component *************** Should render the DashBoard  page correctly 1`] = `
+<div>
+  <div
+    className="contentContainer"
+  >
+    <h2
+      className="dashboardTitle"
+    >
+      Sort By
+    </h2>
+  </div>
+  <Connect(ExpenseListFilter) />
+  <Connect(ExpensesList) />
+</div>
+`;

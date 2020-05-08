@@ -18,30 +18,40 @@ class ExpenseListFilter extends React.Component{
     onFocusChange=( calendarFocused )=>{
         this.setState(()=>({ calendarFocused }));
     }
+    onSortChange = (e)=>{ 
+        if(e.target.value === 'date'){
+            return this.props.dispatch(setSortByDate());
+        } else if(e.target.value === 'amount'){
+            return this.props.dispatch(setSortByAmount());
+        }
+     }
+
     render(){
         return (
-            <div>
-                <input type='text' 
+            <div className='contentContainer'>
+                <div className="inputGroup">
+                <div className="inputGroupItem">
+                <input type='text'
+                    className="textInput" 
                     value={ this.props.filters.text } 
-                    placeholder='Enter a filter text' 
+                    placeholder='Text...' 
                     onChange={(e)=>{
                     props.dispatch(setTextFilter(e.target.value));
                     }} 
                 />
+                </div>
+                <div className="inputGroupItem">
                 <select 
+                    className="select"
                     value={ this.props.filters.sortBy }
-                    onChange={ (e)=>{ 
-                        if(e.target.value === 'date'){
-                            return this.props.dispatch(setSortByDate());
-                        } else if(e.target.value === 'amount'){
-                            return this.props.dispatch(setSortByAmount());
-                        }
-                     } }
+                    onChange={ this.onSortChange }
                 >
                     <option value='date' >Date</option>
         
                     <option value='amount'>Amount</option>
                 </select>
+                </div>
+                <div className="inputGroupItem">
                 < DateRangePicker 
                     startDate = { this.props.filters.startDate }
                     startDateId = { uuidv4() }
@@ -54,7 +64,8 @@ class ExpenseListFilter extends React.Component{
                     numberOfMonths = { 1 }
                     isOutsideRange = { ()=> false }
                 />
-        
+               </div>
+             </div>
             </div>
         );
     }

@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should render expenses list correctly 1`] = `
+<div
+  className="contentContainer"
+>
+  <div
+    className="listHeader"
+  >
+    <div
+      className="mobile"
+    >
+      Expenses
+    </div>
+    <div
+      className="deskTop"
+    >
+      Expense
+    </div>
+    <div
+      className="deskTop"
+    >
+      Amount
+    </div>
+  </div>
+  <div
+    className="listBody"
+  >
+    <Component
+      amount={195}
+      createdAt={0}
+      description="Gum Expense"
+      id="1"
+      key="1"
+      note="Testing Expense 1"
+    />
+    <Component
+      amount={109500}
+      createdAt={-345600000}
+      description="Rent Expense"
+      id="2"
+      key="2"
+      note="Testing Expense 2"
+    />
+    <Component
+      amount={4500}
+      createdAt={345600000}
+      description="Credit Card Expense"
+      id="3"
+      key="3"
+      note="Testing Expense 3"
+    />
+    ;
+  </div>
+</div>
+`;
+
+exports[`Should render no expenses 1`] = `
+<div
+  className="contentContainer"
+>
+  <div
+    className="listHeader"
+  >
+    <div
+      className="mobile"
+    >
+      Expenses
+    </div>
+    <div
+      className="deskTop"
+    >
+      Expense
+    </div>
+    <div
+      className="deskTop"
+    >
+      Amount
+    </div>
+  </div>
+  <div
+    className="listBody"
+  >
+    <div
+      className="noListMessage"
+    >
+      <span>
+        No expenses
+      </span>
+    </div>
+    ;
+  </div>
+</div>
+`;
