@@ -50,7 +50,6 @@ exports[`Should render expenses list correctly 1`] = `
       key="3"
       note="Testing Expense 3"
     />
-    ;
   </div>
 </div>
 `;
@@ -88,7 +87,6 @@ exports[`Should render no expenses 1`] = `
         No expenses
       </span>
     </div>
-    ;
   </div>
 </div>
 `;
