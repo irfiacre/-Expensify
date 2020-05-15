@@ -21,3 +21,4 @@ yarn.lock
 # should NOT be excluded as they contain compiler settings and other important
 # information for Eclipse / Flash Builder.
 node_modules
+.env
