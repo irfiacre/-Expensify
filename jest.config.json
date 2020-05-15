@@ -5,5 +5,7 @@
     ],
     "snapshotSerializers": [
         "enzyme-to-json/serializer"
-    ]
+    ],
+
+    "verbose" : true
 }
