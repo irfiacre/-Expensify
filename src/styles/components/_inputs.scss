@@ -1,9 +1,9 @@
 .textInput {
     border: 1px solid #cacccd;
-    height: 50px;
     font-size: $font-size-large;
     font-weight: 300;
     padding: $smallSize;
+    outline: none;
   }
   
   .select {
@@ -23,6 +23,7 @@
 .inputGroup {
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
     margin-bottom: $twoNormalSize;
     @media (min-width: $desktop-breakpoint) {
       flex-direction: row;

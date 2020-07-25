@@ -2,6 +2,11 @@
     background: $off-white;
     margin-bottom: $threeNormalSize;
     padding: $threeNormalSize 0;
+    
+    @media (max-width:600px) {
+      padding: 10px;
+      margin-bottom: $smallSize;
+    }
   }
   
   .pageHeaderTitle {

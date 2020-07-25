@@ -8,6 +8,17 @@
         margin: 0;
       }
   }
+  .menuIcon{
+    display: none;
+    color: #fff;
+    font-size: 35px;
+    margin-top: 0.7rem;
+    float: right;
+    
+    @media (max-width:600px) {
+      display: block;
+    }
+  }
   
  .links{
     margin-top: 1.3rem;
@@ -15,7 +26,31 @@
     text-decoration: none;
     display: flex;
     justify-content: space-around;
+    
+    @media (max-width:600px) {
+      display: none;
+    }
+    
   }
+  
+.mobileLinks{
+  @extend .links;
+  
+  @media (max-width:600px) { 
+    margin-top: 1.3rem;
+    color: white;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    padding: 5vh 0;
+    margin-left: -130px;
+    
+    .link{
+      margin: 10px 0;
+    }
+    }
+}
+
 .navLink{
     color: white;
     text-decoration: none;

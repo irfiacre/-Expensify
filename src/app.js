@@ -17,9 +17,6 @@ store.dispatch( addExpense({ description: 'Gas Bill', note: 'I had to pay my gas
 store.dispatch( addExpense({ description: 'Water Bill', note: 'This is related to house hold bills',createdAt: 1000 }) );
 store.dispatch( addExpense({ description: 'Rent', note: 'This is related to house hold bills', amount: 15000  }) );
 
-console.log('Running');
-
-
 const appDiv = document.getElementById('app');
 const jsx =(
     <Provider store= { store } >
