@@ -13,11 +13,13 @@ const AppRouter =()=>(
                 <Header />
                 <Switch>
                     <Route path="/" component={dashboard} exact = { true }/>
-                    <Route path="/create" component={createExpense} />
-                    <Route path="/edit/:id" component={ editExpense } />
+                    <div>
+                        <Route path="/create" component={createExpense} />
+                        <Route path="/edit/:id" component={ editExpense } />
+                        <Footer />
+                    </div>
                     <Route component={error} />
                 </Switch>
-                <Footer />
             </div>
         </BrowserRouter>
     );
