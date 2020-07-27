@@ -1,4 +1,4 @@
-.button {
+.button{
     background: $dark-blue;
     border: none;
     color: white;
@@ -8,8 +8,10 @@
     line-height: 1;
     padding: $smallSize;
     text-decoration: none;
+    outline: none;
   }
 
-  .remove {
+  .remove{
+    @extend .button;
     background: #888;
   }

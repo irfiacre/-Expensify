@@ -1,25 +1,37 @@
-const path =  require('path')
-// const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+require('dotenv').config()
 
-module.exports =(env)=>{
+var DIST_DIR = path.resolve(__dirname, 'dist'); // Define the distribution directory
+var SRC_DIR = path.resolve(__dirname, 'src'); // Define the source directory
+/**
+ * HTML Webpack Plugin configuration
+ */
+const htmlWebpackPlugin = new HtmlWebpackPlugin({
+  template: './public/index.html',
+  filename: 'index.html',
+  // favicon: "./src/assets/favicon.png",
+  inject: 'body',
+});
+/* Webpack configuration setup     
+*/
+
+module.exports = (env) => {
     const isProduction = env === 'production';
-    
-   return {
-        entry:'./src/app.js',
+    return{
+        entry: ['babel-polyfill',SRC_DIR + '/app.js'],
         output: {
-            path: path.join(__dirname, 'public', 'dist'),
-            filename: 'bundle.js'
+          path: DIST_DIR,
+          filename: 'index.bundle.js',
+          publicPath: '/',
         },
-        module:{
-            rules: [{
-                loader: 'babel-loader',
-                test: /\.js$/,
-                exclude: /node_modules/
-            },
+        module: {
+          rules: [
             {
-                test: /\.s?css/,
-                use:[
+                test: /\.(scss|css)$/,
+                use: [
                      {
                        loader: MiniCssExtractPlugin.loader,
                      },
@@ -27,6 +39,7 @@ module.exports =(env)=>{
                          loader: "css-loader",
                          options: {
                              sourceMap: true,
+                             url: false,
                          }
                      },
                      {
@@ -36,21 +49,49 @@ module.exports =(env)=>{
                          }
                      }
 
-                     ]
-            }]
-        },
-
-        plugins:[
-            new MiniCssExtractPlugin(),
-        ],
-
-        devtool: isProduction ? 'source-map':'inline-source-map',
-        
-        devServer: {
-            contentBase: path.join(__dirname, 'public'),
-            historyApiFallback: true,
-            publicPath: 'public/dist'
-        }
+                     ],
+              },
+              {
+                test: /\.(js|jsx)$/,
+                include: SRC_DIR,
+                exclude: /node_modules/,
+                use: 'babel-loader',
+              },
+              {
+                test: /\.(png|jpeg|jpg|gif|svg)$/,
+                use: [
+                  {
+                    loader: 'file-loader',
+                    options: {},
+                  },
+                ],
+              },
+              {
+                test: /\.(woff|woff2|eot|ttf|otf)$/i,
+                use: [
+                  {
+                    loader: 'file-loader',
+                  },
+                ],
+              },
+              
+            ],
+          },
     
-    };
-};
+          devtool: isProduction ? 'source-map':'cheap-module-eval-source-map',
+    
+          devServer: {
+            historyApiFallback: true,
+          },
+          
+          plugins:[
+            htmlWebpackPlugin,
+            new MiniCssExtractPlugin,
+            new webpack.DefinePlugin({
+              'process.env': {
+                'API_BASE_URL': JSON.stringify(process.env.API_BASE_URL),
+              }
+            }),
+          ]
+    }
+}

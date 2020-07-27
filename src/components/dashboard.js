@@ -7,8 +7,10 @@ const dashboard = ()=>(
         <div className="contentContainer">
             <h2 className="dashboardTitle">Sort By</h2>
         </div>
-        <ExpenseListFilter />
-        <ExpenseList />
+        <div className='main'>
+            <ExpenseListFilter />
+            <ExpenseList />
+        </div>
     </div>
 );
 

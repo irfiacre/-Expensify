@@ -1,0 +1,40 @@
+footer{
+    position: relative;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin-top: 6.9vh;
+    text-align: center;
+    background: $dark-blue;
+    height:5vh;
+    padding:10px 0;
+    font-size:16px;
+    font-weight:400;
+    
+    span{
+      color:white;
+    }
+
+    
+}
+
+@media(min-height:1000px){
+    footer{
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      padding: 1rem;
+      text-align: center;
+      
+    }
+
+  }
+
+  @media(max-width: 600px){
+    footer{
+    	position: relative;
+    	margin-top: 23vh;
+	}
+  };
+  

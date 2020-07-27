@@ -93,7 +93,16 @@ export default class ExpenseForm extends React.Component{
                     placeholder='Add a note for your expense(optional)'
                     onChange={ this.onAddNoteChange }
                 ></textarea>
-                    <button className="button"> Add Expense </button>
+                    <button className="button"> 
+                   { this.props.isEdit? 'Update Expense':'Add Expense' }
+                    </button>
+                    {this.props.isEdit?(
+                        <button 
+                        className="button remove"
+                        onClick={ this.onRemove }> 
+                            Remove 
+                        </button>
+                    ):null}
                 </form>
             </div>
         )

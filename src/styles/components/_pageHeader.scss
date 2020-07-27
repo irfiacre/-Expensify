@@ -1,7 +1,12 @@
 .pageHeader {
     background: $off-white;
-    margin-bottom: $threeNormalSize;
-    padding: $threeNormalSize 0;
+    margin-bottom: $normalSize;
+    padding: $twoNormalSize 0;
+    
+    @media (max-width:600px) {
+      padding: 10px;
+      margin-bottom: $smallSize;
+    }
   }
   
   .pageHeaderTitle {
