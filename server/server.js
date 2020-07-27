@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const publicPath = path.join(__dirname, '../', 'public');
+const publicPath = path.join(__dirname, '../', 'dist');
 const app = express();
 
 const PORT = process.env.PORT || 9000;
